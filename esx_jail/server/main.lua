@@ -7,10 +7,10 @@ TriggerEvent('es:addGroupCommand', 'jail', 'admin', function(source, args, user)
 	if args[1] and GetPlayerName(args[1]) ~= nil and tonumber(args[2]) then
 		TriggerEvent('esx_jail:sendToJail', tonumber(args[1]), tonumber(args[2] * 60))
 	else
-		TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Invalid player ID or jail time!' } } )
+		TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', '유효하지 않은 플레이어 ID 또는 감옥 시간!' } } )
 	end
 end, function(source, args, user)
-	TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Insufficient Permissions.' } })
+	TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', '권한이 충분하지 않습니다.' } })
 end, {help = "Put a player in jail", params = {{name = "id", help = "target id"}, {name = "time", help = "jail time in minutes"}}})
 
 -- unjail
@@ -19,13 +19,13 @@ TriggerEvent('es:addGroupCommand', 'unjail', 'admin', function(source, args, use
 		if GetPlayerName(args[1]) ~= nil then
 			TriggerEvent('esx_jail:unjailQuest', tonumber(args[1]))
 		else
-			TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Invalid player ID!' } } )
+			TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', '잘못된 플레이어 ID!' } } )
 		end
 	else
 		TriggerEvent('esx_jail:unjailQuest', source)
 	end
 end, function(source, args, user)
-	TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Insufficient Permissions.' } })
+	TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', '권한이 충분하지 않습니다.' } })
 end, {help = "Unjail people from jail", params = {{name = "id", help = "target id"}}})
 
 -- send to jail and register in database
